@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import routes from './routes';
 
 //actions:
-import { loadLocations } from './actions/locationActions';
 
 // Have Webpack import CSS files too:
 import './styles/styles.css';
@@ -18,8 +17,6 @@ import configureStore from './store/configureStore';
 
 
 const store = configureStore();
-// initial load without server-rendering:
-store.dispatch(loadLocations());
 
 render(
   <Provider store={store}>
