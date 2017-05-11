@@ -6,7 +6,12 @@ const LocationListing = ({locations}) => {
     <div>
       <ul>
         {locations.map(location => {
-          return <LocationListItem key={location.externalId} name={location.name} address={location.address} />;
+          return (<LocationListItem
+            key={location.externalId}
+            externalId={location.externalId}
+            name={location.name}
+            address={location.address}
+          />);
         })}
       </ul>
     </div>
