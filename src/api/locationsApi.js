@@ -1,31 +1,15 @@
-const mockData = {
-  locations: [
-    {
-      name: 'Which Wich',
-      lat: '0',
-      long: '0',
-      distance: '0.3km'
-    },
-    {
-      name: 'Mojo\'s',
-      lat: '0',
-      long: '0',
-      distance: '1.3km'
-    },
-    {
-      name: 'Cypress St. P&P',
-      lat: '0',
-      long: '0',
-      distance: '2.5km'
-    }
-  ]
-};
-
+import { HandleResponse } from './responseHandler';
+//ESLint doesn't detect webpack globals:
+/* global API_URL */
 class LocationsApi {
-  static getNearbyLocations() {
-    return new Promise((resolve, reject) => {
-      return resolve(mockData);
-    });
+  static getNearbyLocations(address) {
+    let url = `${API_URL}v1/locations?address=${address}`;
+    return fetch(url).then(HandleResponse);
+  }
+
+  static getLocationById(id) {
+    let url = `${API_URL}v1/locations/${id}`;
+    return fetch(url).then(HandleResponse);
   }
 }
 
