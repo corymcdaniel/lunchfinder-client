@@ -6,14 +6,22 @@ import LoadingDots from '../common/LoadingDots';
 //import toastr from 'toastr';
 
 class LocationPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fetching: false
+    };
+  }
   componentWillMount() {
     if (this.props.params.id && (!this.props.location || this.props.location.externalId !== this.props.params.id)) {
-      this.props.actions.getLocationById(this.props.params.id);
+      this.setState({fetching: true});
+      this.props.actions.getLocationById(this.props.params.id)
+        .then(() => this.setState({fetching: false}));
     }
   }
 
   render() {
-    if (!this.props.location) {
+    if (!this.props.location || this.state.fetching) {
       return (<div><LoadingDots interval={100} dots={20}/></div>);
     }
     const {name, address} = this.props.location;
