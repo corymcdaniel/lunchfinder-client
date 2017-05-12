@@ -2,25 +2,20 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as locationActions from '../../actions/locationActions';
+import LoadingDots from '../common/LoadingDots';
 //import toastr from 'toastr';
 
 class LocationPage extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      location: Object.assign({}, this.props.location)
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // only update if we've requested a new course
-    if (this.props.location.externalId != nextProps.location.externalId) {
-      this.setState({location: Object.assign({}, nextProps.location)});
+  componentWillMount() {
+    if (this.props.params.id && (!this.props.location || this.props.location.externalId !== this.props.params.id)) {
+      this.props.actions.getLocationById(this.props.params.id);
     }
   }
 
   render() {
+    if (!this.props.location) {
+      return (<div><LoadingDots interval={100} dots={20}/></div>);
+    }
     const {name, address} = this.props.location;
     return (
       <div>
@@ -36,26 +31,8 @@ LocationPage.propTypes = {
   actions: PropTypes.object.isRequired
 };
 
-// Pull in the React Router context so router is available on this.context.router.
-// contextTypes is like a global, forces router on this.context
-LocationPage.contextTypes = {
-  router: PropTypes.object
-};
-
-function getLocationById(locations, id) {
-  const location = locations.filter(location => location.externalId == id);
-  if (location) return location[0];
-  return null;
-}
-
-function mapStateToProps(state, ownProps) {
-  const locationId = ownProps.params.id;
-  let location = {externalId: '', name: '', address: ''};
-
-  if (locationId && state.locations.length > 0) {
-    location = getLocationById(state.locations, locationId);
-  }
-
+function mapStateToProps(state) {
+  const { location } = state;
   return {
     location
   };

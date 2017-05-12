@@ -28,7 +28,9 @@ class HomePage extends React.Component {
   }
 
   submitAddress() {
-    this.props.actions.loadLocations(this.state.address);
+    this.setState({searching: true});
+    this.props.actions.loadLocations(this.state.address)
+      .then(() => this.setState({searching: false}));
   }
 
   render() {
@@ -59,18 +61,7 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-// manual way to use dispatch:
-/*
- function mapDispatchToProps(dispatch) {
- return {
- createCourse: course => dispatch(courseActions.createCourse(course))
- };
- }
- */
-
 // Sets actions to this.props.action
-// Optionally could return each action the same as above too:
-// createCourse: bindActionCreators(courseActions.createCourse, dispatch);
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(locationActions, dispatch)
