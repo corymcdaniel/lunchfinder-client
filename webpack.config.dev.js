@@ -1,6 +1,11 @@
 import webpack from 'webpack';
 import path from 'path';
 
+const GLOBALS = {
+  'process.env.NODE_ENV': JSON.stringify('development'),
+  'API_URL': JSON.stringify('http://localhost:3300/')
+};
+
 export default {
   debug: true,
   devtool: 'inline-source-map',
@@ -21,7 +26,8 @@ export default {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin(GLOBALS)
   ],
   module: {
     loaders: [
