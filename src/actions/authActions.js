@@ -16,6 +16,12 @@ export function LoginFailure() {
   };
 }
 
+export function LogoutSuccess() {
+  return {
+    type: types.LOGOUT_SUCCESS
+  };
+}
+
 export function checkLoggedIn() {
   return function(dispatch) {
     dispatch(beginAjaxCall());
@@ -28,6 +34,15 @@ export function checkLoggedIn() {
       });
     }).catch(err => {
       dispatch(LoginFailure());
+    });
+  };
+}
+
+export function logout() {
+  return function(dispatch) {
+    dispatch(beginAjaxCall());
+    return AuthApi.logout().then(() => {
+      dispatch(LogoutSuccess());
     });
   };
 }

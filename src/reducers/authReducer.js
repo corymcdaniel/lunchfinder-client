@@ -8,8 +8,11 @@ export default function auth(state = initialState.auth, action) {
         email: action.email,
         authenticated: true
       });
+    case actions.LOGOUT_SUCCESS:
+      return Object.assign({}, {
+        authenticated: false
+      });
     case actions.LOGIN_FAILURE:
-    case actions.LOGOUT:
     default:
       return state;
   }

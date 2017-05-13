@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 //import { geolocated, geoPropTypes } from 'react-geolocated';
 
 import * as locationActions from '../../actions/locationActions';
-import authApi from '../../api/authApi';
 import LocationListing from '../location/locationListing';
 import Input from '../common/TextInput';
 
@@ -51,7 +50,6 @@ class HomePage extends React.Component {
 
 HomePage.propTypes = {
   locations: PropTypes.array.isRequired,
-  dispatch: PropTypes.func
 };
 
 // ownProps references this component's own props

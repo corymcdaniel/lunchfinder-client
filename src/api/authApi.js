@@ -17,6 +17,15 @@ class AuthApi {
       header: getAuthorizationHeaders()
     });
   }
+
+  static logout() {
+    let url = `${API_URL}v1/auth/logout`;
+    return fetch(url, {
+      credentials: 'include',
+      mode: 'cors',
+      header: getAuthorizationHeaders()
+    });
+  }
 }
 
 export default AuthApi;
