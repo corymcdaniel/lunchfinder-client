@@ -1,5 +1,6 @@
 export default {
   locations: [],
   location: {},
-  numAjaxCallsInProgress: 0
+  numAjaxCallsInProgress: 0,
+  auth: {}
 };

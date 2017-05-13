@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import React, {PropTypes} from 'react';
-import { Link } from 'react-router';
-import * as authActions from '../../actions/authActions';
-=======
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
@@ -10,6 +5,7 @@ import { bindActionCreators } from 'redux';
 //import { geolocated, geoPropTypes } from 'react-geolocated';
 
 import * as locationActions from '../../actions/locationActions';
+import authApi from '../../api/authApi';
 import LocationListing from '../location/locationListing';
 import Input from '../common/TextInput';
 
@@ -43,7 +39,6 @@ class HomePage extends React.Component {
       <div>
         <div className="jumbotron">
           <h1>Where's Lunch?</h1>
-          <p><a href="http://localhost:3300/v1/auth/facebook">Login with Facebook</a></p>
           <Input label="Your Address" name="search" onChange={this.onSearchChange}></Input>
           <button type="button" onClick={this.submitAddress}>Search</button>
           <Link to="about" className="btn btn-primary btn-lg">Learn More</Link>

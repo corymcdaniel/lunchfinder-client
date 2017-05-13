@@ -5,6 +5,7 @@ import { render } from 'react-dom'; // render function for the browser
 import { Router, browserHistory } from 'react-router'; // removes the need for # based urls
 import { Provider } from 'react-redux';
 import routes from './routes';
+import * as actions from './actions/authActions';
 
 //actions:
 
@@ -17,7 +18,7 @@ import configureStore from './store/configureStore';
 
 
 const store = configureStore();
-
+store.dispatch(actions.checkLoggedIn());
 render(
   <Provider store={store}>
     <Router history={browserHistory} routes={routes} />
