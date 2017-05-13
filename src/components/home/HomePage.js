@@ -50,7 +50,6 @@ class HomePage extends React.Component {
 
 HomePage.propTypes = {
   locations: PropTypes.array.isRequired,
-  dispatch: PropTypes.func
 };
 
 // ownProps references this component's own props
