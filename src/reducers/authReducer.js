@@ -1,19 +1,15 @@
 import * as actions from '../actions/actionTypes';
+import initialState from './initialState';
 
-const defaultState = {
-  authenticated: false
-};
-
-export function auth(state = defaultState, action) {
+export default function auth(state = initialState.auth, action) {
   switch (action.type) {
     case actions.OAUTH_LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        username: action.username,
+        email: action.email,
         authenticated: true
       });
     case actions.LOGIN_FAILURE:
     case actions.LOGOUT:
-      return defaultState;
     default:
       return state;
   }
