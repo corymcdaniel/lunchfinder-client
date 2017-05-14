@@ -37,7 +37,6 @@ App.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     loading: state.ajaxCallsInProgress > 0,
     auth: state.auth

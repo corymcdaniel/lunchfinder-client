@@ -1,15 +1,33 @@
 #app {
-    font: 13px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #4d4d4d;
-    min-width: 550px;
-    max-width: 850px;
-    margin: 0 auto;
+  font: 13px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #4d4d4d;
+  min-width: 550px;
+  max-width: 850px;
+  margin: 0 auto;
 }
 
 a.active {
-    color: orange;
+  color: orange;
 }
 
 nav {
-    padding-top: 20px;
+  padding-top: 20px;
+}
+
+.icon-border {
+  border: 1px solid cornflowerblue;
+  border-radius: 3px;
+  padding: 3px;
+  margin: 5px;
+}
+.rating-select label {
+  cursor: pointer;
+}
+
+.rating-select input {
+  display: none;
+}
+
+.icon-selected {
+  background-color: #5bc0de;
 }
