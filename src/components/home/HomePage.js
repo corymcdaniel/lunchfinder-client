@@ -49,13 +49,11 @@ class HomePage extends React.Component {
 }
 
 HomePage.propTypes = {
-  locations: PropTypes.array.isRequired,
+  locations: PropTypes.array.isRequired
 };
 
-// ownProps references this component's own props
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
-    //defines this.props.courses:
     locations: state.locations
   };
 }
