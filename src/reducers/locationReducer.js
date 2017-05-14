@@ -8,6 +8,7 @@ export default function locationReducer(state = initialState.location, action) {
     case types.SUBMIT_REVIEW_SUCCESS:
       //TODO: Fix this:
       //let location = Object.assign({}, state);
+      debugger;
       state.reviews.push(action.review);
       return Object.assign({}, state);
     default:

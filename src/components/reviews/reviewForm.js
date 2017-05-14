@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import * as reviewActions from '../../actions/reviewActions';
 
 import Input from '../common/TextInput';
 import SelectRating from './selectRating';
@@ -12,7 +13,7 @@ class ReviewForm extends React.Component {
     this.state = {
       review: {
         comment: '',
-        rating: 0,
+        rating: 1,
         submitting: false
       }
     };
@@ -23,17 +24,18 @@ class ReviewForm extends React.Component {
   onReviewChange(event) {
     const field = event.target.name;
     let review = this.state.review;
-    review[field] = event.target.value;
+    review[field] = isNaN(event.target.value) ? event.target.value : parseInt(event.target.value);
     return this.setState({review: review});
   }
 
   render() {
     return (
       <form role="form">
-        <SelectRating onSelect={onReviewChange} />
+        <SelectRating label="Rating" onSelect={this.onReviewChange} selectedRating={this.state.review.rating} />
         <Input label="Comment"
                name="comment"
                onChange={this.onReviewChange} />
+        <button type="button" className="btn btn-default" onClick={this.submit}>Submit</button>
       </form>
     );
   }

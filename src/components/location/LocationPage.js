@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as locationActions from '../../actions/locationActions';
 import LoadingDots from '../common/LoadingDots';
 import ReviewList from '../reviews/reviewList';
+import ReviewForm from '../reviews/reviewForm';
 //import toastr from 'toastr';
 
 class LocationPage extends React.Component {
@@ -32,6 +33,8 @@ class LocationPage extends React.Component {
           <h1>{name}</h1>
           <address>{address}</address>
         </div>
+        {this.props.auth && this.props.auth.authenticated &&
+        <ReviewForm location={this.props.location}/>}
         <div>
           <ReviewList reviews={reviews}/>
         </div>
@@ -42,14 +45,16 @@ class LocationPage extends React.Component {
 
 LocationPage.propTypes = {
   location: PropTypes.object.isRequired,
+  auth: PropTypes.object,
   actions: PropTypes.object.isRequired,
   params: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-  const { location } = state;
+  const { location, auth } = state;
   return {
-    location
+    location,
+    auth
   };
 }
 
