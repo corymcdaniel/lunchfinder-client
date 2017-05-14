@@ -19,6 +19,15 @@ class ReviewForm extends React.Component {
     };
 
     this.onReviewChange = this.onReviewChange.bind(this);
+    this.submit = this.submit.bind(this);
+  }
+
+  submit() {
+    this.setState({
+      submitting: true
+    });
+    this.props.actions.submitReview(this.state.review)
+      .then(() => this.setState({submitting: false}));
   }
 
   onReviewChange(event) {
@@ -42,7 +51,7 @@ class ReviewForm extends React.Component {
 }
 
 ReviewForm.propTypes = {
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
