@@ -14,7 +14,8 @@ class ReviewForm extends React.Component {
       review: {
         comment: '',
         rating: 1,
-        submitting: false
+        submitting: false,
+        locationId: this.props.location.externalId
       }
     };
 
