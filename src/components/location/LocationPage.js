@@ -34,7 +34,7 @@ class LocationPage extends React.Component {
           <div className="row location-details">
             <div className="col-md-7">
               <p>
-                <address><a href={`http://maps.google.com/?q=${address}`}>{address}</a></address>
+                <address><a href={`http://maps.google.com/?q=${address}`} target="_blank">{address}</a></address>
                 {url && <a href={url} target="_blank">View Website</a>}
                 <br/>
                 {menu && <a href={menu} target="_blank">View Menu</a>}
