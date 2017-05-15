@@ -7,7 +7,7 @@ const ReviewListItem = ({user, rating, comment, createdAt}) => {
       <div className="media-body">
         <h4 className="media-heading">{user.name}</h4>
         <h5>{createdAt}</h5>
-        <p><Rating rating={rating}></Rating></p>
+        <p><Rating rating={rating} /></p>
         <p>{comment}</p>
       </div>
     </li>

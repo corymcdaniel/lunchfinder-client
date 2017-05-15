@@ -23,6 +23,8 @@ will be found in /common.
 Different environments use different webpack configurations.  You must specify the
 API url within them (defaults to localhost:3000). 
 
+Linting is provided.
+
 #### Deployment
 Using your CI tool of choice, you simply need to have a script run `npm build`
 and deploy the `dist` folder.  This will compile all necessary packages for production.

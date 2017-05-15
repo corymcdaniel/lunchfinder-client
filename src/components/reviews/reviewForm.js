@@ -41,7 +41,6 @@ class ReviewForm extends React.Component {
   render() {
     /* globals API_URL */
     const authUrl = `${API_URL}v1/auth/facebook`;
-console.log(this.props);
     if (!this.props.auth.authenticated) {
       return (
         <div className="review-form">
@@ -67,7 +66,8 @@ console.log(this.props);
 
 ReviewForm.propTypes = {
   location: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
