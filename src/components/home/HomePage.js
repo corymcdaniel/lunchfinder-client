@@ -37,10 +37,16 @@ class HomePage extends React.Component {
     return (
       <div>
         <div className="jumbotron">
-          <h1>Where's Lunch?</h1>
-          <Input label="Your Address" name="search" onChange={this.onSearchChange}></Input>
-          <button type="button" onClick={this.submitAddress}>Search</button>
-          <Link to="about" className="btn btn-primary btn-lg">Learn More</Link>
+          <h1>Where Should I Eat?</h1>
+          <p>Search for restaurants near you and see what other's have to say about them.</p>
+          <div className="row">
+            <div className="col-md-10">
+              <Input label="Find restaurants near (Enter an address, city, state, or postal code)" name="search" onChange={this.onSearchChange} />
+            </div>
+            <div className="col-md-2 pull-right">
+              <button className="btn btn-primary" type="button" onClick={this.submitAddress}>Search</button>
+            </div>
+          </div>
         </div>
         {this.props.locations && this.props.locations.length > 0 && <LocationListing locations={this.props.locations} />}
       </div>
@@ -49,7 +55,8 @@ class HomePage extends React.Component {
 }
 
 HomePage.propTypes = {
-  locations: PropTypes.array.isRequired
+  locations: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

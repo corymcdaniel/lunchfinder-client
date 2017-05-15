@@ -3,9 +3,14 @@ import {Link} from 'react-router';
 
 const LocationListItem = ({externalId, name, address}) => {
   return (
-    <li>
-      <h3><Link to={'/locations/' + externalId}>{name}</Link></h3>
-      <p>{address}</p>
+    <li className="list-item">
+      <div className="row">
+        <div className="col-md-12">
+          <h3><Link to={'/locations/' + externalId}>{name}</Link></h3>
+          <p>{address}</p>
+          <p><Link to={'/locations/' + externalId}>Info and Reviews</Link></p>
+        </div>
+      </div>
     </li>
   );
 };

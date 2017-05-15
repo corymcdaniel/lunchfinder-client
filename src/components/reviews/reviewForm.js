@@ -40,7 +40,7 @@ class ReviewForm extends React.Component {
 
   render() {
     return (
-      <form role="form">
+      <form role="form" className="review-form">
         <SelectRating label="Rating" onSelect={this.onReviewChange} selectedRating={this.state.review.rating} />
         <Input label="Comment"
                name="comment"

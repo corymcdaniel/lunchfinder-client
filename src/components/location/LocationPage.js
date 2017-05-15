@@ -29,7 +29,7 @@ class LocationPage extends React.Component {
     const {name, address, reviews} = this.props.location;
     return (
       <div>
-        <div>
+        <div className="jumbotron">
           <h1>{name}</h1>
           <address>{address}</address>
         </div>

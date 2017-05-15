@@ -6,7 +6,8 @@ const SelectRating = ({label, selectedRating, onSelect}) => {
     const thumbsDown = 'glyphicon glyphicon-thumbs-down';
 
     return (
-      <div className="rating-select">
+      <div className="rating-select form-group">
+
         <span>{label}</span>
         <label>
           <input type="radio"

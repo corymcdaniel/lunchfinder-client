@@ -6,6 +6,12 @@
   margin: 0 auto;
 }
 
+ul, ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 a.active {
   color: orange;
 }
@@ -15,9 +21,9 @@ nav {
 }
 
 .icon-border {
-  border: 1px solid cornflowerblue;
+  border: 1px solid #337ab7;
   border-radius: 3px;
-  padding: 3px;
+  padding: 5px 10px;
   margin: 5px;
 }
 .rating-select label {
@@ -29,5 +35,42 @@ nav {
 }
 
 .icon-selected {
-  background-color: #5bc0de;
+  background-color: #337ab7;
+  color: white;
+}
+
+.jumbotron h1 {
+  text-align: center;
+}
+
+.jumbotron button {
+  margin-top: 21px;
+}
+
+.list-item {
+  border: 1px solid #337ab7;
+  background-color: aliceblue;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.list-item p {
+  font-size: 1.3em;
+}
+
+.list-item a {
+  cursor: pointer;
+}
+
+.review-form {
+  border: 1px solid #337ab7;
+  background-color: aliceblue;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 20px 0;
 }
