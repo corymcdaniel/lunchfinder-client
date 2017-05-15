@@ -6,6 +6,10 @@
   margin: 0 auto;
 }
 
+a {
+  cursor: pointer;
+}
+
 ul, ol {
   list-style-type: none;
   margin: 0;
@@ -73,4 +77,9 @@ nav {
   border-radius: 3px;
   padding: 10px;
   margin: 20px 0;
+}
+
+.location-details {
+  margin-top: 30px;
+  font-size: 1.3em;
 }

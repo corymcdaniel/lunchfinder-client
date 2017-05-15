@@ -39,13 +39,27 @@ class ReviewForm extends React.Component {
   }
 
   render() {
+    /* globals API_URL */
+    const authUrl = `${API_URL}v1/auth/facebook`;
+console.log(this.props);
+    if (!this.props.auth.authenticated) {
+      return (
+        <div className="review-form">
+          You must <a href={authUrl}>have an account / login</a> to add a review.
+        </div>
+      );
+    }
     return (
       <form role="form" className="review-form">
+        <h2>Leave a Review:</h2>
         <SelectRating label="Rating" onSelect={this.onReviewChange} selectedRating={this.state.review.rating} />
         <Input label="Comment"
                name="comment"
                onChange={this.onReviewChange} />
-        <button type="button" className="btn btn-default" onClick={this.submit}>Submit</button>
+        <button type="button"
+                className="btn btn-primary"
+                disabled={this.state.submitting}
+                onClick={this.submit}>Submit</button>
       </form>
     );
   }
@@ -53,11 +67,13 @@ class ReviewForm extends React.Component {
 
 ReviewForm.propTypes = {
   location: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    location: state.location
+    location: state.location,
+    auth: state.auth
   };
 }
 
