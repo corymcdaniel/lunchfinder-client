@@ -2,7 +2,8 @@
 ### Webclient
 
 #### Installation / Run
-To run locally, make sure Mongo is running and you have the Restaurant Finder API.
+To run locally, make sure you have the Restaurant Finder API running locally
+or point your dev webpack config to a hosted location of it.
 
 `git clone` repo
 
