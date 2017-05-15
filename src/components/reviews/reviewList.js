@@ -3,7 +3,7 @@ import ReviewListItem from './reviewListItem';
 
 const ReviewList = ({reviews}) => {
   return (
-    <div>
+    <ul>
       {reviews.map((review) => {
         return (<ReviewListItem
           user={review.user}
@@ -13,7 +13,7 @@ const ReviewList = ({reviews}) => {
           key={review._id}/>
         );
       })}
-    </div>
+    </ul>
   );
 };
 

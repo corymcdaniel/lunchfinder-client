@@ -26,17 +26,36 @@ class LocationPage extends React.Component {
     if (!this.props.location || this.state.fetching) {
       return (<div><LoadingDots interval={100} dots={20}/></div>);
     }
-    const {name, address, reviews} = this.props.location;
+    const {name, address, reviews, url, menu, attributes} = this.props.location;
     return (
       <div>
-        <div>
+        <div className="jumbotron">
           <h1>{name}</h1>
-          <address>{address}</address>
+          <div className="row location-details">
+            <div className="col-md-7">
+              <p>
+                <address><a href={`http://maps.google.com/?q=${address}`}>{address}</a></address>
+                {url && <a href={url} target="_blank">View Website</a>}
+                <br/>
+                {menu && <a href={menu} target="_blank">View Menu</a>}
+              </p>
+            </div>
+            <div className="col-md-5">
+              {attributes && <h4>Additional Details:</h4>}
+              <ul>
+                {attributes.map(attr => {
+                  if (attr.summary) {
+                    return (<li>{attr.name}: {attr.summary}</li>);
+                  }
+                })}
+              </ul>
+            </div>
+          </div>
         </div>
-        {this.props.auth && this.props.auth.authenticated &&
-        <ReviewForm location={this.props.location}/>}
+        <ReviewForm location={this.props.location}/>
         <div>
-          <ReviewList reviews={reviews}/>
+          {!reviews && <span>No one has left a review yet.</span>}
+          {reviews && <ReviewList reviews={reviews}/>}
         </div>
       </div>
     );

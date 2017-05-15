@@ -11,7 +11,7 @@ const Header = ({loading, auth, logout}) => {
       <Link to="/about" activeClassName="active">About</Link>
       {" | "}
       {auth.authenticated && <a href="#" onClick={logout}>Logout</a>}
-      {!auth.authenticated && <a href={authUrl}>Login via FB</a>}
+      {!auth.authenticated && <a href={authUrl}>Login via Facebook</a>}
       {loading && <LoadingDots interval={100} dots={20}/>}
     </nav>
   );
