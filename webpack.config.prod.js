@@ -4,7 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
-  'API_URL': JSON.stringify('')
+  'API_URL': JSON.stringify('https://lunchfinder-api.herokuapp.com/')
 };
 
 export default {
