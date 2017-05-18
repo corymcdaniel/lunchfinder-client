@@ -1,5 +1,5 @@
 {
-  "name": "warp-webclient",
+  "name": "lunchfinder-client",
   "version": "1.0.0",
   "description": "WebClient for Finding Nearby Lunch",
   "author": "Cory McDaniel",
@@ -73,6 +73,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/corymcdaniel/warp-webclient"
+    "url": "https://github.com/corymcdaniel/lunchfinder-client"
   }
 }

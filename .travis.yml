@@ -1,0 +1,22 @@
+sudo: false
+language: node_js
+branches:
+  only:
+  - master
+  - dev
+node_js:
+- 6.10.2
+install:
+- npm install
+script:
+- npm run build
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  api_key:
+    secure: bfLKiICRJGPj760TLiGhfFGtvyQGDM9ZSMQXHmvBW0+/HoX72zWM5Yar0/pOIY0p4ureZ/XuIbacfVao3us7M1HY6nplQdNwKcAnFErH68EtSJ7yxS0UbEpEM0vaJKxR8SA6+GsBGUeGMUUDtNY/T0Y4S93LKDabPGNuz5K5B8SWc9729CvVrw2ou/9r0O3VQdGlExJ9tmFduyu07uLCW3E9OS1qj6YZ7if2chhDf9SDiAU9WiTpVs7i5yEGG5cLaMTAUdMjubp1fhKHfhIknIdK/hICWigh12TSEfrq4qN5Zul4oDm46sFmCFPZwbwWZCD7jWI3ruHw25S5YHguow8sv7oerVvHngBcFfzHpQur+eMAN97JtkVfL0WK9ZSUM131tbzSD1gi62r+1gAxp9DfgLJLOu9kWPqvo1ww2R5QOZW8LW6kddH1nTN9GxrhvTvPHLLy0aKgXqxWWD6XDEv/Dhx3dR3ddYq+stprJ1nV+CeZMHC9Jl+7PB3pu9pGY5mFlCwt1CtXXPP3ckc1oDzByzil7rIr3U2JZwDAC9jnHY9WrBhKnX4yM1WUdWJ/u2Mx0lDOFzDfyul76tM0g5QCs9j4uDLuYZUfxFFYhpS8xyfQJjmvY7TcADrT2C9vCHI0uBUQhXXbdNsC35WXClV8+uI8n8FKwRRVjK2A++Y=
+  app:
+    master: lunchfinder-client
+cache:
+  directories:
+  - node_modules

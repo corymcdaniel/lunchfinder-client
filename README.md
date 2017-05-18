@@ -26,5 +26,5 @@ API url within them (defaults to localhost:3000).
 Linting is provided.
 
 #### Deployment
-Using your CI tool of choice, you simply need to have a script run `npm build`
+Using your CI tool of choice, you simply need to have a script run `npm run build`
 and deploy the `dist` folder.  This will compile all necessary packages for production.
