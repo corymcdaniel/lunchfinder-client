@@ -33,8 +33,8 @@ class LocationPage extends React.Component {
           <h1>{name}</h1>
           <div className="row location-details">
             <div className="col-md-7">
+              <address><a href={`http://maps.google.com/?q=${address}`} target="_blank">{address}</a></address>
               <p>
-                <address><a href={`http://maps.google.com/?q=${address}`} target="_blank">{address}</a></address>
                 {url && <a href={url} target="_blank">View Website</a>}
                 <br/>
                 {menu && <a href={menu} target="_blank">View Menu</a>}
@@ -45,7 +45,8 @@ class LocationPage extends React.Component {
               <ul>
                 {attributes.map(attr => {
                   if (attr.summary) {
-                    return (<li>{attr.name}: {attr.summary}</li>);
+                    attr.summary = attr.summary === attr.name ? 'Yes' : attr.summary;
+                    return (<li key={attr.name}>{attr.name}: {attr.summary}</li>);
                   }
                 })}
               </ul>

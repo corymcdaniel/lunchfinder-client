@@ -83,3 +83,7 @@ nav {
   margin-top: 30px;
   font-size: 1.3em;
 }
+
+.location-details address {
+  font-size: 1.3em;
+}
