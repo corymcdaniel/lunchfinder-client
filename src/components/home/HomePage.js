@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-//import { geolocated, geoPropTypes } from 'react-geolocated';
+import { geolocated, geoPropTypes } from 'react-geolocated';
 
 import * as locationActions from '../../actions/locationActions';
 import LocationListing from '../location/locationListing';
@@ -15,10 +15,22 @@ class HomePage extends React.Component {
     this.state = {
       address: '',
       errors: {},
-      searching: false
+      searching: false,
+      initialSubmit: false
     };
     this.onSearchChange = this.onSearchChange.bind(this);
     this.submitAddress = this.submitAddress.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.state.initialSubmit && nextProps.isGeolocationAvailable && nextProps.isGeolocationEnabled && nextProps.coords) {
+      this.setState({
+        searching: true,
+        initialSubmit: true
+      });
+      this.props.actions.loadLocations(nextProps.coords)
+        .then(() => this.setState({searching: false}));
+    }
   }
 
   onSearchChange(event) {
@@ -71,14 +83,11 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(locationActions, dispatch)
   };
 }
+let homepage = connect(mapStateToProps, mapDispatchToProps)(HomePage);
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
-
-/*
 export default geolocated({
   positionOptions: {
-    enableHighAccuracy: false,
+    enableHighAccuracy: false
   },
   userDecisionTimeout: 5000
-})(HomePage);
-  */
+})(homepage);
