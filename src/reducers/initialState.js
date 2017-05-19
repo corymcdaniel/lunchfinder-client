@@ -1,6 +1,8 @@
 export default {
   locations: [],
-  location: {},
+  location: {
+    reviews: []
+  },
   numAjaxCallsInProgress: 0,
   auth: {
     authenticated: false
