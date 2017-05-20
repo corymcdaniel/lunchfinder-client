@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 import LoadingDots from './LoadingDots';
 /* globals API_URL */
-const authUrl = `${API_URL}v1/auth/facebook`;
+const authUrl = `${API_URL}v1/auth/facebook?redirectTo=${window.location.href}`;
 const Header = ({loading, auth, logout}) => {
   return (
     <nav>

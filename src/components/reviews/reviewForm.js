@@ -40,7 +40,7 @@ class ReviewForm extends React.Component {
 
   render() {
     /* globals API_URL */
-    const authUrl = `${API_URL}v1/auth/facebook`;
+    const authUrl = `${API_URL}v1/auth/facebook?redirectTo=${window.location.href}`;
     if (!this.props.auth.authenticated) {
       return (
         <div className="review-form">
