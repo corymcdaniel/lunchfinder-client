@@ -2,11 +2,12 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { geolocated, geoPropTypes } from 'react-geolocated';
+import { geolocated } from 'react-geolocated';
 
 import * as locationActions from '../../actions/locationActions';
 import LocationListing from '../location/locationListing';
 import Input from '../common/TextInput';
+import GeoLoader from './geoLoader';
 
 class HomePage extends React.Component {
   constructor(props, context) {
@@ -15,7 +16,7 @@ class HomePage extends React.Component {
     this.state = {
       address: '',
       errors: {},
-      searching: false,
+      searching: true,
       initialSubmit: false
     };
     this.onSearchChange = this.onSearchChange.bind(this);
@@ -23,7 +24,7 @@ class HomePage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.state.initialSubmit && nextProps.isGeolocationAvailable && nextProps.isGeolocationEnabled && nextProps.coords) {
+    if (!this.state.initialSubmit && nextProps.coords) {
       this.setState({
         searching: true,
         initialSubmit: true
@@ -31,6 +32,7 @@ class HomePage extends React.Component {
       this.props.actions.loadLocations(nextProps.coords)
         .then(() => this.setState({searching: false}));
     }
+
   }
 
   onSearchChange(event) {
@@ -50,7 +52,11 @@ class HomePage extends React.Component {
       <div>
         <div className="jumbotron">
           <h1>Where Should I Eat?</h1>
-          <p>Search for restaurants near you and see what other's have to say about them.</p>
+          <GeoLoader
+            loading={this.state.searching}
+            geoAvailable={this.props.isGeolocationAvailable}
+            geoEnabled={this.props.isGeolocationEnabled}
+          />
           <div className="row">
             <div className="col-md-10">
               <Input label="Find restaurants near (Enter an address, city, state, or postal code)" name="search" onChange={this.onSearchChange} />
