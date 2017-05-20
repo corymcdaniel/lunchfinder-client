@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { geolocated } from 'react-geolocated';
+import { geolocated, geoPropTypes } from 'react-geolocated';
 
 import * as locationActions from '../../actions/locationActions';
 import LocationListing from '../location/locationListing';
@@ -59,7 +59,9 @@ class HomePage extends React.Component {
           />
           <div className="row">
             <div className="col-md-10">
-              <Input label="Find restaurants near (Enter an address, city, state, or postal code)" name="search" onChange={this.onSearchChange} />
+              <Input label="Find restaurants near (Enter an address, city, state, or postal code)"
+                     name="search"
+                     onChange={this.onSearchChange} />
             </div>
             <div className="col-md-2 pull-right">
               <button className="btn btn-primary" type="button" onClick={this.submitAddress}>Search</button>
@@ -76,6 +78,8 @@ HomePage.propTypes = {
   locations: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
+
+HomePage.propTypes = Object.assign({}, HomePage.propTypes, geoPropTypes);
 
 function mapStateToProps(state) {
   return {
