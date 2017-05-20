@@ -3,8 +3,8 @@ import { HandleResponse } from './responseHandler';
 /* global API_URL */
 class LocationsApi {
   static getNearbyLocations(location) {
-    let address;
-    let coords;
+    let address = '';
+    let coords = {};
     if (typeof location === 'string') {
       address = location;
     } else {
