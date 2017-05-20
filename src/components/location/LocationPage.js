@@ -23,7 +23,6 @@ class LocationPage extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     if (!this.props.location || this.state.fetching) {
       return (<div><LoadingDots interval={100} dots={20}/></div>);
     }
