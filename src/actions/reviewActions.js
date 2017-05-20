@@ -12,8 +12,8 @@ export function submitReviewSuccess(review) {
 export function submitReview(review) {
   return function(dispatch) {
     dispatch(beginAjaxCall());
-    return ReviewApi.submit(review).then(review => {
-      dispatch(submitReviewSuccess(review));
+    return ReviewApi.submit(review).then(saved => {
+      dispatch(submitReviewSuccess(saved));
     }).catch(err => {
       throw(err);
     });

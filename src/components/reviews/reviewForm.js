@@ -11,10 +11,10 @@ class ReviewForm extends React.Component {
     super(props, context);
 
     this.state = {
+      submitting: false,
       review: {
         comment: '',
         rating: 1,
-        submitting: false,
         locationId: this.props.location.externalId
       }
     };
@@ -33,7 +33,7 @@ class ReviewForm extends React.Component {
 
   onReviewChange(event) {
     const field = event.target.name;
-    let review = this.state.review;
+    let review = Object.assign({}, this.state.review);
     review[field] = isNaN(event.target.value) ? event.target.value : parseInt(event.target.value);
     return this.setState({review: review});
   }

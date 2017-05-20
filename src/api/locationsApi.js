@@ -4,7 +4,10 @@ import { HandleResponse } from './responseHandler';
 class LocationsApi {
   static getNearbyLocations(location) {
     let address = '';
-    let coords = {};
+    let coords = {
+      latitude: '',
+      longitude: ''
+    };
     if (typeof location === 'string') {
       address = location;
     } else {

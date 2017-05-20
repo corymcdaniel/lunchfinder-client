@@ -45,8 +45,8 @@ class LocationPage extends React.Component {
               <ul>
                 {attributes.map(attr => {
                   if (attr.summary) {
-                    attr.summary = attr.summary === attr.name ? 'Yes' : attr.summary;
-                    return (<li key={attr.name}>{attr.name}: {attr.summary}</li>);
+                    let summary = attr.summary === attr.name ? 'Yes' : attr.summary;
+                    return (<li key={attr.name}>{attr.name}: {summary}</li>);
                   }
                 })}
               </ul>
