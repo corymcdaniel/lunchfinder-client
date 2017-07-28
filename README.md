@@ -11,7 +11,7 @@ or point your dev webpack config to a hosted location of it.
 
 `npm install`
 
-`npm start` (optionally `-s` for less console noise)
+`npm run start-dev` (optionally `-s` for less console noise)
 
 
 #### About
